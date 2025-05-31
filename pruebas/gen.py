@@ -121,4 +121,4 @@ def generate_test2(file_path, n, m):
             else:
                 file.write(f"|{pareja[0]}, {pareja[1]}|];\n")
             
-generate_test2("./parte2/Prueba20.dzn", 3, 20)
+generate_test2("./pruebas/parte2/Prueba20.dzn", 3, 20)
