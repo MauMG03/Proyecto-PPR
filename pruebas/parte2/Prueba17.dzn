@@ -1,0 +1,86 @@
+ACTORES = {Actor0, Actor1, Actor2, Actor3, Actor4, Actor5, Actor6, Actor7, Actor8, Actor9, Actor10, Actor11, Actor12, Actor13, Actor14};
+Escenas =[|0,0,0,1,0,20
+		  |0,1,0,0,0,7
+		  |1,0,0,1,0,14
+		  |0,0,0,1,1,18
+		  |0,1,0,1,1,17
+		  |1,1,0,1,0,11
+		  |1,1,0,1,1,14
+		  |1,0,1,1,1,8
+		  |1,0,0,0,1,5
+		  |0,0,0,1,1,9
+		  |0,1,1,1,0,15
+		  |0,1,1,1,0,14
+		  |0,0,1,1,0,12
+		  |1,0,1,1,0,9
+		  |1,0,1,1,0,15
+		  |];
+Duracion=[2, 2, 3, 3, 4];
+Disponibilidad = [|Actor0, 40
+				  |Actor1, 6
+				  |Actor2, 13
+				  |Actor3, 5
+				  |Actor4, 15
+				  |Actor5, 30
+				  |Actor6, 42
+				  |Actor7, 4
+				  |Actor8, 21
+				  |Actor9, 41
+				  |Actor10, 19
+				  |Actor11, 22
+				  |Actor12, 21
+				  |Actor13, 33
+				  |Actor14, 14|];
+Evitar = [|Actor6, Actor12
+		  |Actor1, Actor7
+		  |Actor10, Actor12
+		  |Actor11, Actor12
+		  |Actor1, Actor5
+		  |Actor7, Actor14
+		  |Actor4, Actor5
+		  |Actor6, Actor13
+		  |Actor0, Actor3
+		  |Actor5, Actor9
+		  |Actor3, Actor5
+		  |Actor0, Actor6
+		  |Actor10, Actor11
+		  |Actor4, Actor9
+		  |Actor1, Actor10
+		  |Actor8, Actor9
+		  |Actor0, Actor5
+		  |Actor5, Actor12
+		  |Actor11, Actor14
+		  |Actor2, Actor12
+		  |Actor6, Actor14
+		  |Actor5, Actor13
+		  |Actor0, Actor2
+		  |Actor3, Actor8
+		  |Actor3, Actor11
+		  |Actor2, Actor9
+		  |Actor7, Actor9
+		  |Actor10, Actor13
+		  |Actor10, Actor14
+		  |Actor1, Actor13
+		  |Actor5, Actor7
+		  |Actor3, Actor10
+		  |Actor4, Actor14
+		  |Actor13, Actor14
+		  |Actor0, Actor9
+		  |Actor7, Actor10
+		  |Actor2, Actor10
+		  |Actor0, Actor11
+		  |Actor8, Actor11
+		  |Actor4, Actor12
+		  |Actor2, Actor6
+		  |Actor6, Actor8
+		  |Actor7, Actor12
+		  |Actor8, Actor13
+		  |Actor9, Actor13
+		  |Actor6, Actor10
+		  |Actor9, Actor11
+		  |Actor6, Actor11
+		  |Actor0, Actor10
+		  |Actor1, Actor9
+		  |Actor12, Actor13
+		  |Actor2, Actor7
+		  |Actor0, Actor8|];

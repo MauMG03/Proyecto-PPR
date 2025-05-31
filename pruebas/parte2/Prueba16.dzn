@@ -1,0 +1,121 @@
+ACTORES = {Actor0, Actor1, Actor2, Actor3, Actor4, Actor5, Actor6, Actor7, Actor8, Actor9, Actor10, Actor11, Actor12, Actor13, Actor14};
+Escenas =[|1,1,1,0,0,8
+		  |0,1,0,1,1,11
+		  |1,0,0,1,0,19
+		  |0,0,0,0,1,10
+		  |0,1,1,1,1,16
+		  |0,0,0,1,1,15
+		  |1,0,1,0,1,13
+		  |0,1,1,1,1,15
+		  |1,1,0,0,1,15
+		  |1,0,0,1,1,8
+		  |1,0,0,1,1,7
+		  |1,0,1,0,0,1
+		  |0,0,1,0,0,13
+		  |0,0,0,1,0,12
+		  |0,1,1,0,0,18
+		  |];
+Duracion=[4, 2, 3, 4, 3];
+Disponibilidad = [|Actor0, 44
+				  |Actor1, 22
+				  |Actor2, 41
+				  |Actor3, 39
+				  |Actor4, 2
+				  |Actor5, 18
+				  |Actor6, 17
+				  |Actor7, 42
+				  |Actor8, 7
+				  |Actor9, 38
+				  |Actor10, 5
+				  |Actor11, 28
+				  |Actor12, 22
+				  |Actor13, 23
+				  |Actor14, 42|];
+Evitar = [|Actor2, Actor14
+		  |Actor0, Actor6
+		  |Actor0, Actor5
+		  |Actor4, Actor8
+		  |Actor1, Actor14
+		  |Actor1, Actor12
+		  |Actor5, Actor14
+		  |Actor0, Actor12
+		  |Actor8, Actor12
+		  |Actor4, Actor10
+		  |Actor1, Actor9
+		  |Actor9, Actor14
+		  |Actor0, Actor1
+		  |Actor0, Actor10
+		  |Actor8, Actor14
+		  |Actor3, Actor12
+		  |Actor1, Actor7
+		  |Actor1, Actor4
+		  |Actor1, Actor2
+		  |Actor9, Actor11
+		  |Actor3, Actor10
+		  |Actor11, Actor13
+		  |Actor6, Actor8
+		  |Actor4, Actor14
+		  |Actor6, Actor13
+		  |Actor4, Actor11
+		  |Actor10, Actor11
+		  |Actor4, Actor7
+		  |Actor3, Actor14
+		  |Actor2, Actor5
+		  |Actor7, Actor12
+		  |Actor7, Actor8
+		  |Actor6, Actor7
+		  |Actor3, Actor6
+		  |Actor10, Actor14
+		  |Actor8, Actor11
+		  |Actor2, Actor13
+		  |Actor8, Actor10
+		  |Actor1, Actor11
+		  |Actor2, Actor11
+		  |Actor12, Actor13
+		  |Actor3, Actor13
+		  |Actor3, Actor11
+		  |Actor0, Actor8
+		  |Actor10, Actor12
+		  |Actor0, Actor2
+		  |Actor1, Actor13
+		  |Actor1, Actor8
+		  |Actor2, Actor8
+		  |Actor6, Actor9
+		  |Actor4, Actor13
+		  |Actor0, Actor9
+		  |Actor8, Actor13
+		  |Actor11, Actor12
+		  |Actor2, Actor9
+		  |Actor2, Actor10
+		  |Actor0, Actor3
+		  |Actor1, Actor5
+		  |Actor5, Actor7
+		  |Actor2, Actor7
+		  |Actor3, Actor7
+		  |Actor5, Actor12
+		  |Actor5, Actor10
+		  |Actor9, Actor12
+		  |Actor12, Actor14
+		  |Actor4, Actor5
+		  |Actor3, Actor9
+		  |Actor2, Actor4
+		  |Actor1, Actor6
+		  |Actor3, Actor5
+		  |Actor0, Actor4
+		  |Actor1, Actor10
+		  |Actor10, Actor13
+		  |Actor9, Actor13
+		  |Actor0, Actor7
+		  |Actor2, Actor3
+		  |Actor0, Actor14
+		  |Actor6, Actor12
+		  |Actor3, Actor4
+		  |Actor7, Actor14
+		  |Actor6, Actor10
+		  |Actor4, Actor6
+		  |Actor5, Actor13
+		  |Actor4, Actor9
+		  |Actor4, Actor12
+		  |Actor2, Actor6
+		  |Actor7, Actor13
+		  |Actor9, Actor10|];

@@ -1,0 +1,19 @@
+ACTORES = {Actor0, Actor1, Actor2, Actor3, Actor4};
+Escenas =[|0,0,0,1,0,0,0,1,13
+		  |1,1,1,1,1,1,1,1,18
+		  |0,1,0,0,1,1,1,0,13
+		  |0,0,1,0,1,1,1,0,14
+		  |1,1,0,1,0,0,1,1,19
+		  |];
+Duracion=[3, 2, 3, 4, 4, 2, 2, 1];
+Disponibilidad = [|Actor0, 36
+				  |Actor1, 39
+				  |Actor2, 27
+				  |Actor3, 33
+				  |Actor4, 3|];
+Evitar = [|Actor1, Actor4
+		  |Actor0, Actor4
+		  |Actor3, Actor4
+		  |Actor0, Actor1
+		  |Actor2, Actor4
+		  |Actor1, Actor3|];
