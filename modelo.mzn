@@ -37,11 +37,16 @@ constraint forall(i in 1..n)(
 );
 
 %Calculo del costo total
-constraint costos = sum(i in 1..n)(sum(j in 1..m)(Duracion[j] * ap[i,j]) * Escenas[i,m+1]);
+constraint costos = sum(i in 1..n)(sum(j in 1..m)(Duracion[orden[j]] * ap[i,j]) * Escenas[i,m+1]);
 
-var int: min_x = min_int(scenes(1));
+%Simetrias
+%Soluciones espejo
+%constraint pos[1] <= (m + 1) div 2;
+
+%Redundancia
+%El tiempo en que aparece un actor aparece en el set es mayor o igual a la cantidad de escensa que tiene
+%constraint forall(i in 1..n)(sum(j in 1..m)(ap[i,j]) >= sum(j in 1..m)(Escenas[i,j]));
+ 
  
 % ------------------------------ Funcion Objetivo ------------------------------
 solve minimize costos;
-
-%output [ "sc: \(min_x)\n" ];
