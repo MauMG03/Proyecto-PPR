@@ -13,12 +13,12 @@ Escenas =[|0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,17
 Duracion=[2, 4, 5, 3, 4, 4, 4, 3, 1, 2, 3, 4, 3, 4, 5];
 Disponibilidad = [|Actor0, 38
 				  |Actor1, 35
-				  |Actor2, 3
+				  |Actor2, 0
 				  |Actor3, 26
-				  |Actor4, 7
+				  |Actor4, 0
 				  |Actor5, 22
 				  |Actor6, 21
-				  |Actor7, 16
+				  |Actor7, 0
 				  |Actor8, 31
 				  |Actor9, 41|];
 Evitar = [|Actor8, Actor9

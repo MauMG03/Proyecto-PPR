@@ -10,7 +10,7 @@ Disponibilidad = [|Actor0, 36
 				  |Actor1, 39
 				  |Actor2, 27
 				  |Actor3, 33
-				  |Actor4, 3|];
+				  |Actor4, 0|];
 Evitar = [|Actor1, Actor4
 		  |Actor0, Actor4
 		  |Actor3, Actor4

@@ -17,13 +17,13 @@ Escenas =[|0,0,0,1,0,20
 		  |];
 Duracion=[2, 2, 3, 3, 4];
 Disponibilidad = [|Actor0, 40
-				  |Actor1, 6
+				  |Actor1, 10
 				  |Actor2, 13
-				  |Actor3, 5
+				  |Actor3, 15
 				  |Actor4, 15
 				  |Actor5, 30
 				  |Actor6, 42
-				  |Actor7, 4
+				  |Actor7, 12
 				  |Actor8, 21
 				  |Actor9, 41
 				  |Actor10, 19

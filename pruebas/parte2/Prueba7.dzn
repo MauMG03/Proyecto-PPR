@@ -7,7 +7,7 @@ Escenas =[|1,0,0,0,1,13
 		  |];
 Duracion=[4, 4, 2, 2, 5];
 Disponibilidad = [|Actor0, 24
-				  |Actor1, 2
+				  |Actor1, 0
 				  |Actor2, 35
 				  |Actor3, 48
 				  |Actor4, 14|];

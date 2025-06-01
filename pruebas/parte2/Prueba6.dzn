@@ -9,7 +9,7 @@ Duracion=[5, 2, 2, 2, 4];
 Disponibilidad = [|Actor0, 33
 				  |Actor1, 25
 				  |Actor2, 35
-				  |Actor3, 1
+				  |Actor3, 10
 				  |Actor4, 22|];
 Evitar = [|Actor0, Actor1
 		  |Actor2, Actor4
