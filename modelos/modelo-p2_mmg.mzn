@@ -52,14 +52,6 @@ constraint costos = sum(i in 1..n)(sum(j in 1..m)(Duracion[orden[j]] * ap[i,j]) 
 
 % ------------------------ Restricciones Adicionales ---------------------------
 
-%Simetrias
-%soluciones espejo
-constraint pos[1] <= (m + 1) div 2;
-
-%Redundancia
-%el tiempo en que aparece un actor aparece en el set es mayor o igual a la cantidad de escensa que tiene
-constraint forall(i in 1..n)(sum(j in 1..m)(ap[i,j]) >= sum(j in 1..m)(Escenas[i,j]));
-
 %Calcula todos los tiempos que comparten los actores con otros
 constraint forall(i in 1..n, j in 1..n)(tiempo[i,j] = sum(k in 1..m where ap[i,k] + ap[j,k] = 2)(Duracion[orden[k]]));
 
@@ -70,8 +62,19 @@ constraint forall(i in index_set_1of2(Disponibilidad) where Disponibilidad[i,2] 
 %Suma de todos los tiempos que comparten una pareja de actores que quieren evitarse
 constraint compartido = sum(i in 1..max(index_set_1of2(Evitar)))(tiempo[Evitar[i,1],Evitar[i,2]]);
 
+%Simetrias
+%soluciones espejo
+constraint pos[1] <= (m + 1) div 2;
+
+%Redundancia
+%el tiempo en que aparece un actor aparece en el set es mayor o igual a la cantidad de escensa que tiene
+constraint forall(i in 1..n)(sum(j in 1..m)(ap[i,j]) >= sum(j in 1..m)(Escenas[i,j]));
+
+constraint forall(i in 1..n, j in 1..n where i < j)(tiempo[i,j] = tiempo[j,i]);
+constraint forall(i in 1..n)(tiempo[i,i] = sum(j in 1..m)(ap[i,j] * Duracion[orden[j]]));
+
 % ------------------------------ Funcion Objetivo ------------------------------
-solve minimize 80*costos + 20*compartido;
+solve minimize 70*costos + 30*compartido;
 %solve minimize costos;
 
 %output [show(Duracion[orden[2]] * ap[Disponibilidad[2,1],2])];
