@@ -4,6 +4,7 @@ from pathlib import Path
 from tkinter import filedialog, ttk, messagebox
 
 from minizinc import Model, Solver, Instance
+from minizinc.error import TypeError
 
 
 class PlanificadorApp(tk.Tk):
@@ -63,30 +64,58 @@ class PlanificadorApp(tk.Tk):
         modelo_path = f"./modelos/modelo-{version_modelo}_mmg.mzn"
         modelo = Model(modelo_path)
         archivo_dzn = Path(self.archivo_path.get())
-
-        print(f"Modelo: {modelo_path}")
-        print(f"Archivo de entrada: {archivo_dzn}")
-        print(f"Tiempo máximo: {minutos} minutos")
-
         modelo.add_file(archivo_dzn)
-        solver = Solver.lookup("gecode")
-        instance = Instance(solver, modelo)
-        time_limit = timedelta(minutes=minutos)
-        output = instance.solve(verbose=True, debug_output=Path("debug_output.txt"), time_limit=time_limit)
-        print(output, output["pos"])
 
+        try:
+            solver = Solver.lookup("gecode")
+            instance = Instance(solver, modelo)
+            time_limit = timedelta(minutes=minutos)
+            output = instance.solve(verbose=True, debug_output=Path("debug_output.txt"), time_limit=time_limit)
+        except TypeError as e:
+            messagebox.showerror("Hubo un problema al ejecutar el modelo", f"Verifique que el archivo de datos seleccionado corresponda al modelo seleccionado y contenga únicamente los datos esperados.\n{e}")
+            return
+
+        print(output, output["pos"])
+        self._guardar_salida(output, version_modelo, archivo_dzn)
+
+    def _guardar_salida(self, output, version_modelo, archivo_dzn):
         archivo_salida_nombre = archivo_dzn.stem + f"_{version_modelo}_salida.txt"
         archivo_salida = archivo_dzn.with_name(archivo_salida_nombre)
         orden_final = output["pos"]
         costo_total = output["costos"]
+        tiempo_compartido = output["compartido"] if version_modelo == "p2" else None
+
+        # Guardar archivo
         with open(archivo_salida, "w") as f:
-            salida = " ".join(map(str, orden_final)) + f" {costo_total}"
-            f.write(salida)
-        salida += "\n"
-        for orden, escena in enumerate(orden_final[:3], start=1):
-            salida += f"Escena {escena} en posición {orden}, "
-        salida += f"etc. Costo de la solución ${costo_total * 100000:,}."
-        messagebox.showinfo("Listo", salida + f"\nArchivo de salida \"{archivo_salida_nombre}\" guardado.")
+            salida_linea = " ".join(map(str, orden_final)) + f" {costo_total}"
+            if tiempo_compartido:
+                salida_linea += f" {tiempo_compartido}"
+            f.write(salida_linea)
+
+        # Construir resumen para mostrar
+        resumen = f"Archivo de salida guardado como: {archivo_salida_nombre}\n"
+        resumen += f"Costo total de la solución: ${costo_total * 100_000:,}\n"
+        if tiempo_compartido:
+            resumen += f"Tiempo compartido por los actores que preferirían evitarse: {tiempo_compartido}\n"
+        resumen += "Primeras escenas planificadas:\n"
+        resumen += f"   {'Posición':<10}|{'Escena':<10}\n   "
+        resumen += "-" * 10 + "|" + "-" * 10 + "\n"
+
+        for orden, escena in enumerate(orden_final, start=1):
+            resumen += f"   {orden:<10}|{escena:<10}\n"
+        resumen += "\n"
+
+        # Mostrar ventana emergente con resumen
+        ventana = tk.Toplevel(self)
+        ventana.title("Resumen de la solución")
+        ventana.geometry("400x400")
+
+        texto = tk.Text(ventana, wrap="word", padx=10, pady=10, font=("Courier New", 10))
+        texto.insert("1.0", resumen)
+        texto.config(state="disabled")  # Solo lectura
+        texto.pack(expand=True, fill="both")
+
+        ttk.Button(ventana, text="Cerrar", command=ventana.destroy).pack(pady=10)
 
 
 if __name__ == "__main__":
